@@ -1,0 +1,21 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: b77ae3e0-e055-4fe9-b588-1592f9490a20
+plugins:
+  extractors:
+  - name: tap-slack
+    variant: mashey
+    pip_url: git+https://github.com/Mashey/tap-slack.git
+    config:
+      channels:
+      - xxxxxx
+      token: xxxxxxxxxxx
+      start_date: '2016-10-01T00:00:00Z'
+    select:
+    - messages.text
+    - messages.bot_id
+    - messages.user
+  loaders:
+  - name: target-csv
+    variant: hotgluexyz
+    pip_url: git+https://github.com/hotgluexyz/target-csv.git@0.3.3
